@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Name — Posts</title>
+  <meta name="description" content="Posts by year — minimal blog index template" />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --muted:#666;
+      --accent:#0b74de;
+      --maxw:1100px;
+      --gap:24px;
+      --radius:12px;
+      --card-shadow: 0 6px 18px rgba(16,24,40,.06);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%;margin:0;background:var(--bg);color:#111;}
+    a{color:var(--accent);text-decoration:none}
+    header{
+      border-bottom:1px solid #eee;
+      padding:22px 16px;
+      position:sticky; top:0; background:linear-gradient(to bottom, rgba(255,255,255,.98), rgba(255,255,255,.95));
+      backdrop-filter: blur(4px);
+      z-index:10;
+    }
+    .container{max-width:var(--maxw);margin:0 auto;display:flex;gap:var(--gap);align-items:flex-start;padding:0 16px;}
+    .brand{
+      display:flex;gap:16px;align-items:center;
+    }
+    .brand img{width:64px;height:64px;border-radius:8px;object-fit:cover}
+    .brand h1{font-size:20px;margin:0}
+    nav{margin-left:auto;display:flex;gap:12px;align-items:center}
+    nav a{padding:8px 10px;border-radius:8px;color:var(--muted);font-weight:600}
+    nav a.primary{color:#111;border:1px solid #eee;padding:8px 12px}
+
+    main{display:flex;gap:var(--gap);padding:28px 16px;}
+    .content{flex:1;min-width:0;}
+    .sidebar{width:280px;flex-shrink:0}
+
+    .year {margin-top:14px;margin-bottom:10px;color:var(--muted);font-weight:700}
+    .post-list{display:flex;flex-direction:column;gap:18px}
+    .post{
+      padding:18px;border-radius:12px;background:#fff;box-shadow:var(--card-shadow);
+      display:flex;flex-direction:column;gap:8px;border:1px solid #f3f4f6;
+    }
+    .post h3{margin:0;font-size:18px}
+    .meta{color:var(--muted);font-size:13px}
+    .back-to-top{display:inline-block;margin-top:4px;font-size:13px;color:var(--muted)}
+
+    .side-card{background:#fff;padding:18px;border-radius:12px;box-shadow:var(--card-shadow);border:1px solid #f3f4f6}
+    .side-card .avatar{display:flex;flex-direction:column;align-items:center;gap:12px}
+    .side-card .avatar img{width:96px;height:96px;border-radius:12px;object-fit:cover}
+    .socials{display:flex;gap:10px}
+    .socials a{font-size:14px;color:var(--muted)}
+
+    /* small screens */
+    @media (max-width:880px){
+      .container{padding:0 12px}
+      main{flex-direction:column}
+      .sidebar{width:100%}
+      nav{display:none}
+      header{padding:14px}
+    }
+    /* subtle headings */
+    h2.section-title{font-size:14px;margin:0;color:var(--muted);letter-spacing: .02em}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container" style="align-items:center;">
+      <div class="brand" aria-label="site-brand">
+        <img src="https://placehold.co/256x256?text=Avatar" alt="avatar" id="header-avatar" />
+        <div>
+          <h1 id="author-name">Your Name</h1>
+          <div style="font-size:13px;color:var(--muted)">Short bio or tagline — developer, writer, researcher</div>
+        </div>
+      </div>
+
+      <nav aria-label="main-navigation">
+        <a href="#" class="primary">Posts</a>
+        <a href="#">Categories</a>
+        <a href="#">Tags</a>
+        <a href="#" id="toggle-search">Toggle search</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="content" id="posts-root">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px">
+        <h2 class="section-title">Posts by Year</h2>
+        <div style="color:var(--muted);font-size:13px">Archive • Sorted newest → oldest</div>
+      </div>
+
+      <!-- posts will be injected here -->
+    </section>
+
+    <aside class="sidebar">
+      <div class="side-card">
+        <div class="avatar">
+          <img src="https://placehold.co/300x300?text=Avatar" alt="avatar" id="sidebar-avatar"/>
+          <div style="text-align:center">
+            <strong id="sidebar-name">Your Name</strong>
+            <div style="color:var(--muted);font-size:13px">Email • GitHub • LinkedIn</div>
+          </div>
+        </div>
+        <hr style="margin:14px 0;border:none;border-top:1px solid #f3f4f6" />
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a href="#" class="socials">Email</a>
+          <a href="#" class="socials">GitHub</a>
+          <a href="#" class="socials">Twitter</a>
+        </div>
+      </div>
+
+      <div style="height:16px"></div>
+
+      <div class="side-card" aria-hidden="false">
+        <div style="font-size:13px;color:var(--muted);font-weight:700;margin-bottom:8px">Quick links</div>
+        <a href="#2023">2023</a><br/>
+        <a href="#2022">2022</a><br/>
+        <a href="#2021">2021</a><br/>
+      </div>
+    </aside>
+  </main>
+
+  <footer style="padding:28px 16px;border-top:1px solid #f3f4f6;background:#fafafa;">
+    <div class="container" style="align-items:center;justify-content:space-between">
+      <div style="color:var(--muted);font-size:13px">&copy; <span id="yr"></span> Your Name</div>
+      <div style="color:var(--muted);font-size:13px">Built with plain HTML • lightweight</div>
+    </div>
+  </footer>
+
+  <script>
+    // Simple data-driven posts list. Replace with your actual posts or generate dynamically.
+    const posts = {
+      "2023": [
+        {title: "LoRA", date: "August 20, 2023", excerpt: "I recently completed another summer internship at Meta... ", href:"#post-lora"}
+      ],
+      "2022": [
+        {title: "Hacking Word Hunt", date: "August 21, 2022", excerpt: "Update: The code was modified...", href:"#post-wordhunt"},
+        {title: "Glow-TTS", date: "April 11, 2022", excerpt: "This post was completed as part of Yale’s course...", href:"#post-glowtts"}
+      ],
+      "2021": [
+        {title:"Reflections and Expectations", date:"Dec 27, 2021", excerpt:"Last year, I wrote a blog post reflecting on...", href:"#post-reflections"},
+        {title:"Score Matching", date:"Dec 26, 2021", excerpt:"Recently, I’ve heard a lot about score-based networks...", href:"#post-scorematch"}
+      ],
+      "2020": [
+        {title:"Better seq2seq", date:"Dec 27, 2020", excerpt:"Improvements to seq2seq in PyTorch...", href:"#post-seq2seq"},
+        {title:"Introduction to seq2seq models", date:"Dec 20, 2020", excerpt:"A primer about seq2seq modelling...", href:"#post-introseq"}
+      ]
+    };
+
+    // render posts grouped by year
+    const root = document.getElementById('posts-root');
+    Object.keys(posts).sort((a,b)=>b-a).forEach(year=>{
+      const yearId = document.createElement('div');
+      yearId.className = 'year';
+      yearId.id = year;
+      yearId.textContent = year;
+      root.appendChild(yearId);
+
+      const list = document.createElement('div');
+      list.className = 'post-list';
+
+      posts[year].forEach(p=>{
+        const post = document.createElement('article');
+        post.className = 'post';
+        post.innerHTML = `
+          <h3><a href="${p.href}">${p.title}</a></h3>
+          <div class="meta">${p.date}</div>
+          <p style="margin:0;color:var(--muted)">${p.excerpt}</p>
+          <a class="back-to-top" href="#top">Back to Top ↑</a>
+        `;
+        list.appendChild(post);
+      });
+
+      root.appendChild(list);
+    });
+
+    // small helpers
+    document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // toggle search (demo)
+    document.getElementById('toggle-search').addEventListener('click', (e)=>{
+      e.preventDefault();
+      alert('Search toggled — plug in a search widget (Lunr/Algolia) or GitHub Pages-based search here.');
+    });
+
+    // Customize the author info at top easily:
+    const author = {
+      name: "Jake Tae (example)",
+      avatar: "https://placehold.co/300x300?text=Avatar",
+      email: "mailto:you@example.com",
+      github: "https://github.com/yourusername",
+      twitter: "https://twitter.com/yourhandle"
+    };
+    document.getElementById('author-name').textContent = author.name;
+    document.getElementById('header-avatar').src = author.avatar;
+    document.getElementById('sidebar-avatar').src = author.avatar;
+    document.getElementById('sidebar-name').textContent = author.name;
+  </script>
+</body>
+</html>
